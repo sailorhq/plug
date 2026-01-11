@@ -1,6 +1,6 @@
 package plug
 
-type HookStatus struct {
+type DoneResponse struct {
 	Ok      bool
 	Message string
 }
@@ -12,9 +12,10 @@ type DeployRequest struct {
 }
 
 type DeployResponse struct {
-	Status HookStatus
+	Status DoneResponse
 }
 
 type SailorHook interface {
+	Health() DoneResponse
 	OnDeploy(req DeployRequest) DeployResponse
 }
